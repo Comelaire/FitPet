@@ -9,8 +9,8 @@ Chartist for the wonderful charts
 
 Quick start options:
 
-- [Download from Github](https://github.com/creativetimofficial/light-bootstrap-dashboard.git).
-- Clone the repo: `git clone https://github.com/creativetimofficial/light-bootstrap-dashboard.git`.
+- [Download from Github](https://github.com/Comelaire/FitPet.git).
+- Clone the repo: `git clone https://github.com/Comelaire/FitPet.git`.
 
 
 ### Version logs
