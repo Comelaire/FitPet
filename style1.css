@@ -1,0 +1,102 @@
+@font-face {
+    font-family: Caviar;
+    src: url(caviar_dreams/CaviarDreams.ttf);
+}
+
+#waiting {
+  text-align: center;
+}
+
+#connect {
+  text-align: center;
+  margin: auto;
+}
+
+#connect a {
+  padding: 15px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: 3px 3px 3px #eee;
+}
+
+#connect h1 {
+  color: #666;
+  font-size: 2.5em;
+}
+
+#connect h2 {
+  font-size: 1.4em;
+}
+
+#connect a:hover{
+  box-shadow: 4px 4px 4px #ddd;
+}
+
+.wrapper, #connect {
+  display: none;
+}
+
+.logo {
+  display: inline-block;
+  font-size: 1.5em;
+  vertical-align: middle;
+  margin: 15px 10px;
+}
+
+.fa {
+  color: #38F;
+}
+
+.animate
+{
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+}
+
+#title1{
+    font-family: Caviar, cursive;
+    font-size: 40px;
+}
+
+#fitpet {
+  width: 100%;
+}
+
+#xp {
+  width: 100%;
+}
+
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+  stroke: #ffa534;
+}
+
+.action-button {
+    position: relative;
+    padding: 10px 40px;
+    margin: 0px 10px 10px 0px;
+    float: left;
+    border-radius: 10px;
+    font-family: Caviar, cursive;
+    font-size: 20px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+a.action-button:hover{
+    color:white;
+}
+
+.blue
+{
+    background-color: #3498DB;
+    border-bottom: 5px solid #2980B9;
+    text-shadow: 0px -2px #2980B9;
+}
+
+.action-button:active
+{
+    transform: translate(0px,5px);
+    -webkit-transform: translate(0px,5px);
+    border-bottom: 1px solid;
+}

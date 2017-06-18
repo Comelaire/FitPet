@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Bienvenue sur FitPet</title>
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#666">
+    <meta name="msapplication-navbutton-color" content="#666">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#666">
+    <link rel="icon" type="image/png" href="assets/img/logo_fitpet.PNG">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+    <!--     Fonts and icons     -->
+    <link href="https://opensource.keycdn.com/fontawesome/4.7.0/font-awesome.min.css" rel="stylesheet">
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <link rel="stylesheet" href="style1.css">
+  </head>
+  <body>
+    <div id="waiting">
+      <img src="assets/img/loading.gif" />
+      <div id="connect">
+        <div class="">
+          <h1>Bienvenue sur FitPet</h1>
+          <h2>
+            <a href="https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=rw6Z68ARgZI&scope=basic_read+move_read+extended_read&redirect_uri=https://fitpet.comelaire.fr/">
+              Connectez-vous à votre compte Jawbone
+            </a>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <img src="assets/img/logo.png" alt="logo" width="70" height="50" />
+              <h1 class="logo">FitPet</h1>
+            </div>
+            <div class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li>
+                  <a id="connect" href="https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=rw6Z68ARgZI&scope=basic_read+move_read+extended_read&redirect_uri=https://fitpet.comelaire.fr/">
+                    <p id="me">Connexion</p>
+                  </a>
+                </li>
+                <li>
+                  <a id="disconnect" href="https://jawbone.com/user/signin/logout_redirect?redirect=https://fitpet.comelaire.fr/">
+                    <p id="me">Déconnexion</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <div class="content">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card">
+                  <div class="header">
+                    <h4 class="title">Mon FitPet</h4>
+                    <p id="level" class="category"></p>
+                  </div>
+                  <div class="content">
+                    <img id="fitpet" src="cute_pet/fitpet.gif" />
+                    <progress id="xp" value="0" max="100"></progress>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="card">
+                  <div class="header">
+                    <h4 class="title">Aujourd'hui</h4>
+                  </div>
+                  <div class="content">
+                    <div id="today"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <div class="card">
+                  <div class="header">
+                    <h4 class="title">Mon activité</h4>
+                    <p class="category">7 derniers jours</p>
+                  </div>
+                  <div class="content">
+                    <div id="chartSemaine" class="ct-chart"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="card">
+                  <div class="header">
+                    <h4 class="title">Historique</h4>
+                    <p class="category">Toute mon activité</p>
+                  </div>
+                  <div class="content">
+                    <div id="chartAll"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card ">
+                  <div class="header">
+                      <h4 class="title">Le saviez-vous ?</h4>
+                  </div>
+                  <div class="content">
+                    <div class="table-full-width">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td><i class="fa fa-calendar-check-o"></i></td>
+                            <td>Pratiquez du sport 5 heures par semaine pour que votre corps profite de tous les bénéfices du sport.</td>
+                          </tr>
+                          <tr>
+                            <td><i class="fa fa-clock-o"></i></td>
+                            <td>L’activité d’endurance devrait être pratiquée par périodes d’au moins 10 minutes.</td>
+                          </tr>
+                          <tr>
+                            <td><i class="fa fa-heartbeat"></i></td>
+                            <td>Des exercices de renforcement musculaire devraient être pratiqués au moins deux jours par semaine.</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/locale/fr.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="user.js"></script>
+  <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+  <!--   Core JS Files   -->
+  <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+  <!--  Charts Plugin -->
+  <script src="assets/js/chartist.min.js"></script>
+</html>
