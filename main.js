@@ -20,7 +20,7 @@ function isStorageEnabled() {
     return typeof(Storage) !== "undefined";
 }
 
-//permet de garder la data dont on a besoin
+//Store data to local storage, or session memory if storage is not enabled
 function setSession(key, value) {
   if (isStorageEnabled()) {
     window.localStorage.setItem(key, value);
@@ -28,7 +28,8 @@ function setSession(key, value) {
     session[key] = value;
   }
 }
-//récuperer la data dont a besoin
+
+//Get data from local storage
 function getSession(key) {
   if (isStorageEnabled()) {
     var value = window.localStorage.getItem(key);
@@ -37,12 +38,14 @@ function getSession(key) {
   return session[key];
 }
 
+//Returns URL code argument, if supplied as callback by Jawbone auth process
 function getCode() {
   var regex = new RegExp("[\\?&]code=([^&#]*)");
   var results = regex.exec(window.location.href);
   return results == null ? null : results[1];
 }
 
+//Perform a full disconnection process, destroying token and session on Jawbone website
 function disconnect() {
   var uri = $(this).attr('href');
   user.disconnect(function(data, textStatus, jqXHR) {
@@ -53,6 +56,8 @@ function disconnect() {
 }
 
 $(document).ready(function() {
+
+  //Create and load user
   user = new User();
   var code = getCode();
   if (code) {
@@ -61,6 +66,8 @@ $(document).ready(function() {
     user.load();
   }
   $('#disconnect').on('click', disconnect);
+
+  //Set all links to relative, in order to allow other domain names thant fitpet.comelaire.fr
   $('a').each(function() {
     if (this.href.indexOf('https://fitpet.comelaire.fr/') !== -1) {
       var pathArray = location.href.split( '/' );

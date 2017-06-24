@@ -1,11 +1,17 @@
+/**
+ * Created by Atypique on 10/05/2017.
+ */
+
+//User constructor
 function User() {
-  
 }
 
+//Extract a score from Jawbone move details object
 User.prototype.getScore = function(details) {
   return details.calories;
 }
 
+//Compute experience won with a move
 User.prototype.getMoveXp = function(t) {
   if (t > 1800 && t < 3600) {
     return 5;
@@ -16,6 +22,7 @@ User.prototype.getMoveXp = function(t) {
   return 4000 / (1 + Math.abs(t - 2700));
 }
 
+//Compute experience won from Jawbone move details object
 User.prototype.getXp = function(details) {
   var fullxp = 0;
   for (var i = 0 ; i < this.moves.length ; i++) {
@@ -24,6 +31,7 @@ User.prototype.getXp = function(details) {
   return Math.round(fullxp);
 }
 
+//Display a chartist graph using supplied data
 User.prototype.showGraph = function(type, id, data, number) {
   var chart = new type(id, {
     series: [ {name: 'serie', data: data, showArea: true} ]
@@ -38,7 +46,8 @@ User.prototype.showGraph = function(type, id, data, number) {
     low: 0,
     showArea: true
   });
-  
+
+  //Graph animation
   chart.on('draw', function(data) {
     if(data.type === 'line' || data.type === 'area') {
       data.element.animate({
@@ -52,10 +61,10 @@ User.prototype.showGraph = function(type, id, data, number) {
       });
     }
   });
-  
-  
+
 }
 
+//Perform a callback if a date match from this user Jawbone moves
 User.prototype.ofDate = function(date, callback) {
   for (var i = 0 ; i < this.moves.length ; i++) {
     var m = this.moves[i];
@@ -65,11 +74,13 @@ User.prototype.ofDate = function(date, callback) {
   }
 }
 
+//Transforms a Jawbone date string into a js date object
 User.prototype.getDate = function(m) {
   var dt = "" + m.date;
   return new Date(dt.substring(0, 4) + "-" + dt.substring(4, 6) + "-" + dt.substring(6, 8));
 }
-  
+
+//Build a chartist graph with data filters
 User.prototype.graph = function(type, id, accept, y, number) {
   var data = [];
   for (var i = 0 ; i < this.moves.length ; i++) {
@@ -83,7 +94,8 @@ User.prototype.graph = function(type, id, accept, y, number) {
   }
   this.showGraph(type, id, data, number);
 }
-  
+
+//Display all user data, graphs and experience
 User.prototype.display = function() {
   var xp = this.getXp();
   $("#xp").attr("value", (xp % 10) * 10).attr("title", xp + " points d'expérience");
@@ -91,6 +103,8 @@ User.prototype.display = function() {
   var lastWeek = new Date().getTime() - (7 * 24 * 60 * 60 * 1000)
   this.graph(Chartist.Line, "#chartSemaine", m => this.getDate(m).getTime() >= lastWeek, d => this.getScore(d), 7);
   this.graph(Chartist.Bar, "#chartAll", () => true, d => this.getScore(d), 20);
+
+  //Day activity
   var notFound = true;
   var html = "<hr>";
   var user = this;
@@ -119,14 +133,17 @@ User.prototype.display = function() {
   $("#today").html(html);
 }
 
+//Get the user full name
 User.prototype.toString = function() {
   return this.data.first + " " + this.data.last;
 }
 
+//Show connection panel
 User.prototype.requestConnect = function() {
   $("#connect").show();
 }
 
+//Request a token from Jawbone API
 User.prototype.requestToken = function(code) {
   var user = this;
   var formData = {
@@ -149,6 +166,7 @@ User.prototype.requestToken = function(code) {
   });
 }
 
+//Disconnect from Jawbone API, destroying used token
 User.prototype.disconnect = function(success) {
   $.ajax({
     url : "https://jawbone.com/nudge/api/v.1.0/users/@me/PartnerAppMembership",
@@ -163,6 +181,7 @@ User.prototype.disconnect = function(success) {
   });
 }
 
+//Get data at specified Jawbone endpoint
 User.prototype.getData = function(url, callback) {
   var user = this;
   if (getSession("token") == null) {
@@ -187,6 +206,7 @@ User.prototype.getData = function(url, callback) {
   }
 };
 
+//Load user data from Jawbone API
 User.prototype.load = function() {
   var user = this;
   this.getData("users/@me", function(data) {
