@@ -130,8 +130,8 @@ User.prototype.requestConnect = function() {
 User.prototype.requestToken = function(code) {
   var user = this;
   var formData = {
-    client_id: "rw6Z68ARgZI",
-    client_secret: "81bec818ff138aace720c1a9342ec6a7a7f75a55",
+    client_id: CLIENT_ID,
+    client_secret: CLIENT_SECRET,
     grant_type: "authorization_code",
     code: code
   };
